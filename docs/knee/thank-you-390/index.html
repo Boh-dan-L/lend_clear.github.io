@@ -47,31 +47,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer class="footer">© Bogdan Rehab</footer>
   <script>
   </script>
-  <script>
+<script>
 (function () {
-  var params = new URLSearchParams(window.location.search);
-  var eventId = params.get("event_id");
-  var orderRef = params.get("order_ref");
-  var value = parseFloat(params.get("value")) || 0;
-  var currency = params.get("currency") || "UAH";
+  var orderRef = "knee_390"; 
+  var value = 390;
+  var currency = "UAH";
 
-  if (!eventId || !orderRef) return;
-
-  // захист від повторного фаєру при F5
   var dedupKey = "meta_purchase_fired_" + orderRef;
+
   if (sessionStorage.getItem(dedupKey)) return;
   sessionStorage.setItem(dedupKey, "1");
 
-  // пуш у dataLayer для GTM
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: "meta_purchase",
-    purchase: {
-      event_id: eventId,
-      order_ref: orderRef,
-      value: value,
-      currency: currency
-    }
+    value: value,
+    currency: currency,
+    order_ref: orderRef
   });
 })();
 </script>
