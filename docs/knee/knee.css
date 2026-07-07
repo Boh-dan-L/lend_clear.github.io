@@ -826,7 +826,7 @@ body {
 }
 .rv-slide img{
   display:block;
-  width:90%;
+  width:100%;
   height:auto;
 }
 
@@ -838,7 +838,7 @@ body {
   font-size:22px; line-height:40px;
   display:flex; align-items:center; justify-content:center;
   box-shadow:0 6px 14px rgba(0,0,0,.18);
-  opacity:.9; z-index:2;
+  opacity:.5; z-index:2;
 }
 .rv-prev { left:8px; }
 .rv-next { right:8px; }
