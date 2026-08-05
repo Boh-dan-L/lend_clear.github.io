@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Дякуємо — програма та індивідуальні рекомендації</title>
-  <link rel="stylesheet" href="../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
   <link rel="stylesheet" href="../knee.css">
 <script>
   window.APP_CONFIG = {
-    landing_id: "knee2-general-thank-you-890",
+    landing_id: "knee2-stairs-thank-you-890",
     pixel_key: "pixel_knee2",
     meta_pixel_id: "1610503490748384"
   };
@@ -46,19 +46,73 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-  <main class="thankyou">
-    <div class="thankyou__box container">
-      <h1 class="thankyou__title">🎉 Дякуємо за покупку!</h1>
-      <p class="thankyou__text">
-        Оплату отримано. Натисніть кнопку нижче, щоб перейти до програми.
-        Інформацію для індивідуальних рекомендацій можна буде надіслати у зручному форматі, після чого Богдан особисто відповість у Telegram.
-      </p>
-      <a class="btn btn--primary" href="https://t.me/Knee2Rehab_bot?start=26kneebot">
-        Перейти до програми
-      </a>
-    </div>
+  <main class="thankyou" aria-labelledby="thankyou-title">
+    <span class="thankyou__glow thankyou__glow--one" aria-hidden="true"></span>
+    <span class="thankyou__glow thankyou__glow--two" aria-hidden="true"></span>
+
+    <section class="thankyou__card">
+      <div class="thankyou__status">
+        <span class="thankyou__status-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M7 12.5 10.2 16 17.5 8.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>Оплату успішно отримано</span>
+      </div>
+
+      <div class="thankyou__intro">
+        <p class="thankyou__eyebrow">Курс + індивідуальні рекомендації</p>
+        <h1 class="thankyou__title" id="thankyou-title">Дякуємо за покупку!</h1>
+        <p class="thankyou__text">
+          Ваше замовлення підтверджено. Залишився один короткий крок — заповніть анкету,
+          щоб отримати доступ до програми та персональні рекомендації від Богдана.
+        </p>
+      </div>
+
+      <div class="thankyou__steps" aria-label="Що буде далі">
+        <article class="thankyou-step thankyou-step--active">
+          <span class="thankyou-step__number">1</span>
+          <div>
+            <h2 class="thankyou-step__title">Заповніть анкету</h2>
+            <p class="thankyou-step__text">Опишіть свою ситуацію та додайте матеріали, якщо вони є.</p>
+          </div>
+        </article>
+
+        <article class="thankyou-step">
+          <span class="thankyou-step__number">2</span>
+          <div>
+            <h2 class="thankyou-step__title">Отримайте доступ</h2>
+            <p class="thankyou-step__text">Після заповнення анкети відкриється доступ до курсу.</p>
+          </div>
+        </article>
+
+        <article class="thankyou-step">
+          <span class="thankyou-step__number">3</span>
+          <div>
+            <h2 class="thankyou-step__title">Очікуйте відповідь</h2>
+            <p class="thankyou-step__text">Богдан особисто опрацює інформацію та відповість у Telegram.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="thankyou__actions">
+        <a class="btn btn--primary thankyou__button" href="https://form.jotform.com/252726386768372">
+          <span>Заповнити анкету</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <p class="thankyou__note">Зазвичай заповнення займає 5–10 хвилин.</p>
+      </div>
+
+      <div class="thankyou__support">
+        <span>Виникли труднощі?</span>
+        <a href="https://t.me/bogdanrehab" target="_blank" rel="noopener noreferrer">Напишіть у Telegram</a>
+      </div>
+    </section>
   </main>
-  <footer class="footer">© Bogdan Rehab</footer>
+
+  <footer class="thankyou-footer">© 2026 Bogdan Rehab</footer>
   <script>
   </script>
   <script>
