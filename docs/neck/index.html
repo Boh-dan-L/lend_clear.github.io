@@ -280,6 +280,45 @@ document.addEventListener("DOMContentLoaded", function () {
           throw new Error(data.error || "Не вдалося створити оплату");
         }
 
+                // ==========================================
+        // META INITIATE CHECKOUT
+        // Browser + Server CAPI
+        // ==========================================
+
+        const checkoutEventId = data.checkout_event_id;
+
+        // 1. Browser InitiateCheckout
+        if (typeof fbq === "function" && checkoutEventId) {
+          fbq(
+            "track",
+            "InitiateCheckout",
+            {
+              value: Number(data.value || 390),
+              currency: data.currency || "UAH",
+              content_ids: [btn.dataset.productId],
+              content_type: "product"
+            },
+            {
+              eventID: checkoutEventId
+            }
+          );
+        }
+
+        // 2. Server InitiateCheckout через CAPI
+        if (data.orderReference) {
+          fetch(API_URL + "/checkout", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              order_reference: data.orderReference
+            }),
+            keepalive: true
+          }).catch(function (error) {
+            console.warn("CAPI InitiateCheckout error:", error);
+          });
+        }
         const payment = data.payment;
         const form = document.createElement("form");
         form.method = "POST";
@@ -358,7 +397,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <span>10–15 хвилин вправ прямо на стільці</span>
 </h1>
 <p class="neck-hero-v2__desc">
-            Коротка програма для людей з дискоифортом в шиї та між лопаток: відкриваєш заняття в Telegram,
+            Коротка програма для людей з дискомфортом в шиї та між лопаток: відкриваєш заняття в Telegram,
             залишаєшся біля робочого місця і виконуєш вправи без залу, килимка та довгого тренування.
           </p>
 </div>
