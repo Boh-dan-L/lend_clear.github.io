@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дякуємо за оплату — доступ до курсу</title>
+  <meta
+    name="description"
+    content="Дякуємо за оплату. Ваш доступ до курсу вже готовий — відкрийте Telegram-бота та почніть проходження."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MHMWBMCD');</script>
+<!-- End Google Tag Manager -->
+
+  <style>
+    :root {
+      --bg: #fdfcf8;
+      --surface: rgba(255,255,255,.82);
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: rgba(148,163,184,.24);
+      --accent: #0f766e;
+      --accent-2: #10b981;
+      --dark: #0f172a;
+      --dark-2: #0b2521;
+      --radius: 32px;
+      --shadow: 0 20px 40px -18px rgba(15, 23, 42, .14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 0;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .bg-blob {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(90px);
+      opacity: .75;
+    }
+
+    .blob-1 {
+      width: 58vw;
+      height: 58vw;
+      max-width: 620px;
+      max-height: 620px;
+      right: -12vw;
+      top: -10vw;
+      background: rgba(153, 246, 228, .42);
+    }
+
+    .blob-2 {
+      width: 50vw;
+      height: 50vw;
+      max-width: 520px;
+      max-height: 520px;
+      left: -16vw;
+      top: 28%;
+      background: rgba(209, 250, 229, .52);
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      width: min(100% - 32px, 520px);
+      margin: 0 auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.9);
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(0,0,0,.03);
+      color: #475569;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .pill-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #14b8a6;
+      box-shadow: 0 0 0 0 rgba(20, 184, 166, .5);
+      animation: pulse 1.8s infinite;
+      flex: 0 0 9px;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(20,184,166,.45); }
+      70% { box-shadow: 0 0 0 14px rgba(20,184,166,0); }
+      100% { box-shadow: 0 0 0 0 rgba(20,184,166,0); }
+    }
+
+    .thank-card {
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.75);
+      box-shadow: var(--shadow);
+      border-radius: 34px;
+      padding: 24px;
+    }
+
+    .success-badge {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 18px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #2dd4bf, #34d399);
+      color: #042f2e;
+      font-size: 34px;
+      box-shadow: 0 18px 36px rgba(20,184,166,.22);
+    }
+
+    .title {
+      margin: 0 0 12px;
+      text-align: center;
+      font-size: clamp(34px, 8vw, 46px);
+      line-height: 1.04;
+      letter-spacing: -.04em;
+    }
+
+    .title .accent {
+      color: var(--accent);
+    }
+
+    .lead {
+      margin: 0 auto 26px;
+      max-width: 420px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .dark-card {
+      background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+      color: white;
+      border-radius: 28px;
+      padding: 22px 18px;
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dark-card::before,
+    .dark-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: .55;
+    }
+
+    .dark-card::before {
+      width: 180px;
+      height: 180px;
+      right: -70px;
+      top: -70px;
+      background: rgba(20,184,166,.28);
+    }
+
+    .dark-card::after {
+      width: 140px;
+      height: 140px;
+      left: -50px;
+      bottom: -50px;
+      background: rgba(16,185,129,.18);
+    }
+
+    .dark-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .dark-card h2 {
+      margin: 0 0 10px;
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .dark-card p {
+      margin: 0;
+      color: rgba(226,232,240,.78);
+      font-size: 15px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 18px 20px;
+      border: 0;
+      border-radius: 20px;
+      font: inherit;
+      font-weight: 800;
+      font-size: 17px;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .25s ease, background .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: scale(.985);
+    }
+
+    .btn-accent {
+      background: linear-gradient(90deg, #2dd4bf, #34d399);
+      color: #042f2e;
+      box-shadow: 0 8px 30px rgba(20,184,166,.25);
+    }
+
+    .btn-dark {
+      background: var(--dark);
+      color: white;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, .16);
+    }
+
+    .btn-wrap {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(255,255,255,.75);
+      box-shadow: var(--shadow);
+      border-radius: 22px;
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #ecfeff;
+      color: var(--accent);
+      font-size: 20px;
+      flex: 0 0 42px;
+      border: 1px solid #ccfbf1;
+    }
+
+    .info-card h3 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .note {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .note strong {
+      color: var(--text);
+    }
+
+    .support-box {
+      margin-top: 18px;
+      border-radius: 22px;
+      padding: 16px;
+      background: rgba(255,255,255,.66);
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .support-box p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .support-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .footer-mini {
+      margin-top: 18px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .thank-card {
+        padding: 30px;
+      }
+
+      .dark-card {
+        padding: 26px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHMWBMCD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="page-bg">
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+  </div>
+
+  <main class="page">
+    <div class="container">
+      <div class="pill">
+        <span class="pill-dot"></span>
+        Оплата успішна
+      </div>
+
+      <section class="thank-card">
+        <div class="success-badge">✓</div>
+
+        <h1 class="title">
+          Дякуємо за оплату — <span class="accent">доступ уже готовий</span>
+        </h1>
+
+        <p class="lead">
+          Ваш курс оплачено успішно. Натисніть кнопку нижче, щоб перейти в Telegram
+          і почати проходження.
+        </p>
+
+        <div class="dark-card">
+          <h2>Що буде далі</h2>
+          <p>
+            Після переходу ви потрапите в бот, де отримаєте перший день курсу.
+            Далі нові відео приходитимуть щодня — як зручне нагадування пройти
+            заняття й не відкладати на потім.
+          </p>
+        </div>
+
+        <div class="btn-wrap">
+          <a
+            class="btn btn-accent"
+            href="https://t.me/NeckRehab_bot?start=neck1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Відкрити доступ у Telegram →
+          </a>
+
+          <a
+            class="btn btn-dark"
+            href="/"
+          >
+            Повернутися на сайт
+          </a>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <div class="info-icon">📩</div>
+            <div>
+              <h3>Доступ відкривається одразу</h3>
+              <p>
+                Якщо кнопка не спрацювала, перевірте Telegram вручну або відкрийте
+                бота за прямим посиланням ще раз.
+              </p>
+            </div>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">📅</div>
+            <div>
+              <h3>Відео приходять по одному щодня</h3>
+              <p>
+                Це зроблено спеціально, щоб вам було легше проходити курс послідовно
+                і не відкладати вправи “на потім”.
+              </p>
+            </div>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">🎥</div>
+            <div>
+              <h3>Формат занять</h3>
+              <p>
+                Кожне відео триває 10–15 хвилин: просто вмикаєте і повторюєте
+                вправи за мною.
+              </p>
+            </div>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">🎁</div>
+            <div>
+              <h3>Бонус у курсі</h3>
+              <p>
+                Усередині також є окремий урок із самомасажу при головному болю
+                напруги.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="support-box">
+          <p>
+            Якщо виникли труднощі з доступом або щось не відкривається — напишіть,
+            і ми допоможемо.
+          </p>
+          <a
+            class="support-link"
+            href="https://t.me/Bogdanrehab"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Написати в підтримку →
+          </a>
+        </div>
+
+        <p class="note">
+          <br />
+          <strong>Приємного проходження курсу.</strong>
+        </p>
+
+        <div class="footer-mini">
+          Якщо ви вже відкривали бот раніше, просто поверніться в чат і натисніть
+          /start або потрібну кнопку меню.
+        </div>
+      </section>
+    </div>
+  </main>
+    <script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var eventId = params.get("event_id");
+  var orderRef = params.get("order_ref");
+  var value = parseFloat(params.get("value")) || 0;
+  var currency = params.get("currency") || "UAH";
+
+  if (!eventId || !orderRef) return;
+
+  // захист від повторного фаєру при F5
+  var dedupKey = "meta_purchase_fired_" + orderRef;
+  if (sessionStorage.getItem(dedupKey)) return;
+  sessionStorage.setItem(dedupKey, "1");
+
+  // пуш у dataLayer для GTM
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "meta_purchase",
+    purchase: {
+      event_id: eventId,
+      order_ref: orderRef,
+      value: value,
+      currency: currency
+    }
+  });
+})();
+</script>
+</body>
+</html>
