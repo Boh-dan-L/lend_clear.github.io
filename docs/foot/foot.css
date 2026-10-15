@@ -1373,3 +1373,15 @@ img{ max-width:100%; height:auto; }
     font-size: 15px;
   }
 }
+/* Keep the rewritten hero clear of the author portrait at every breakpoint. */
+.hero__grid { gap: 16px; }
+.hero__media { position: static; flex: 0 0 43%; width: 43%; height: 250px; margin: 0; }
+.hero__content { max-width: 55%; }
+.hero__title { overflow-wrap: anywhere; font-size: clamp(28px, 5.5vw, 36px); }
+.forwho__number { display: block; margin: 20px 16px 8px; color: var(--c-bg); font-size: 32px; font-weight: 800; }
+@media (min-width: 768px) {
+  .hero { min-height: 380px; }
+  .hero__media { position: absolute; right: 0; top: 0; height: 100%; max-height: 380px; }
+  .hero__content, .hero__text, .hero__bonus { max-width: 55%; }
+  .hero__subtitle { text-align: left; max-width: 55%; }
+}
